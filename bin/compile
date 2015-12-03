@@ -5,7 +5,6 @@ BUILD_PATH=$(cd $1 && pwd)
 CACHE_DIR=$2
 ENV_DIR=$3
 PROFILE=${BUILD_PATH}/.profile.d
-bpdir=$(cd $(dirname $(dirname $0)); pwd)
 
 cd $BUILD_DIR
 # download the minimal mysql tar file
