@@ -20,7 +20,7 @@ rm -f mysql.tar.gz
 
 mkdir -p ${PROFILE}
 touch ${PROFILE}/mysql_buildpack_paths.sh
-echo "export PATH=/app/.heroku/vendor/mysql/bin" >> ${PROFILE}/mysql_buildpack_paths.sh
-echo "export LD_LIBRARY_PATH=/usr/local/lib/=/app/.heroku/vendor/mysql/lib" >> ${PROFILE}/mysql_buildpack_paths.sh
-echo "export LIBRARY_PATH=/app/.heroku/vendor/mysql/lib" >> ${PROFILE}/mysql_buildpack_paths.sh
+# echo "export PATH=/app/.heroku/vendor/mysql/bin" >> ${PROFILE}/mysql_buildpack_paths.sh
+# echo "export LD_LIBRARY_PATH=/usr/local/lib/=/app/.heroku/vendor/mysql/lib" >> ${PROFILE}/mysql_buildpack_paths.sh
+# echo "export LIBRARY_PATH=/app/.heroku/vendor/mysql/lib" >> ${PROFILE}/mysql_buildpack_paths.sh
 
