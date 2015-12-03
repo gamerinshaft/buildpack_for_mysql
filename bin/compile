@@ -1,13 +1,23 @@
 #!/usr/bin/env bash
-echo "-----&gt; IInstalling Mysql 5.1"
-BUILD_DIR = $1
-# change to the the BUILD_DIR ($1)
-cd BUILD_DIR
-# download the binary (-O) silently (-s)
-curl https://raw.githubusercontent.com/gaumire/mysql-binary/master/mysql.tar.gz -s -O -ssl3
+echo "------> Installing Mysql 5.1"
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+PROFILE=${HOME}/.profile.d
+bpdir=$(cd $(dirname $(dirname $0)); pwd)
+
+cd $BUILD_DIR
+# download the minimal mysql tar file
+echo "------> Downloading minimized tarball"
+wget https://raw.githubusercontent.com/gaumire/mysql-binary/master/mysql.tar.gz
 # make a directory to untar (like unzip) the binary
-mkdir -p vendor/mysql
-# untar the binary to the directory we want
-tar -C vendor/mysql -xvf mysql.tar.gz
+mkdir -p $BUILD_DIR/.heroku/vendor/mysql
+# untar the binary to a directory inside /app/.heroku
+tar -C $BUILD_DIR/.heroku/vendor/mysql -xvf mysql.tar.gz
 # remove the tar file
 rm -f mysql.tar.gz
+
+if [ -f ${bpdir}/opt/otp.sh ]; then
+  mkdir -p ${PROFILE}
+  cp ${bpdir}/opt/otp.sh ${PROFILE}
+fi
