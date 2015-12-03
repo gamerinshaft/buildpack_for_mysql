@@ -19,5 +19,5 @@ tar -C $BUILD_DIR/.heroku/vendor/mysql -xvf mysql.tar.gz
 rm -f mysql.tar.gz
 
 mkdir -p ${PROFILE}
-
+touch $build_path/.profile.d/mysql_buildpack_paths.sh
 echo "export PATH=/app/.heroku/vendor/mysql/bin" >> $build_path/.profile.d/mysql_buildpack_paths.sh
