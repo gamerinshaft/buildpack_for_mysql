@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 echo "------> Installing Mysql 5.1"
 BUILD_DIR=$1
+BUILD_PATH=$(cd $1 && pwd)
 CACHE_DIR=$2
 ENV_DIR=$3
-PROFILE=${HOME}/.profile.d
+PROFILE=${BUILD_PATH}/.profile.d
 bpdir=$(cd $(dirname $(dirname $0)); pwd)
 
 cd $BUILD_DIR
@@ -17,7 +18,6 @@ tar -C $BUILD_DIR/.heroku/vendor/mysql -xvf mysql.tar.gz
 # remove the tar file
 rm -f mysql.tar.gz
 
-if [ -f ${bpdir}/opt/otp.sh ]; then
-  mkdir -p ${PROFILE}
-  cp ${bpdir}/opt/otp.sh ${PROFILE}
-fi
+mkdir -p ${PROFILE}
+local export_line="export PATH=/app/.heroku/vendor/mysql/bin"
+echo $export_line >> $build_path/.profile.d/mysql_buildpack_paths.sh
