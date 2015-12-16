@@ -1,0 +1,4 @@
+# buildpack_for_mysql
+
+herokuにmysqlコマンドをビルドするためのパッケージです。
+clearDBを用いていて、mysqldumpをしたいが為に作りました。
